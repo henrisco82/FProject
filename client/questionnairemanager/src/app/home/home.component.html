@@ -1,0 +1,79 @@
+<mat-card>
+  <mat-card-content>
+    <mat-tab-group class="demo-tab-group">
+      <mat-tab label="Login">
+        <div class="demo-tab-content">
+         <form (ngSubmit)="login()">
+           <div class="form-group">
+               
+                   <label>Username</label>
+                   <input class="form-control" type="text" name="username" [(ngModel)]="username" >
+            </div>
+
+            <div class="form-group"> 
+                  <label>Password</label>
+                  <input class="form-control" type="password" name="password" [(ngModel)]="password" >
+            </div>
+
+            <div class="margin-20">
+                  <button mat-raised-button color="primary" name="submit" >Log In</button>
+             </div> 
+              
+         </form>
+        </div>
+      </mat-tab>
+      <mat-tab label="Register">
+        <div class="demo-tab-content">
+          <div class="example-container">
+            <form (ngSubmit)="onRegisterSubmit()">
+            <div class="form-group">
+              <input class="form-control" placeholder="First Name"[(ngModel)]="firstname" name="firstname">
+            </div>
+          
+            <div class="form-group">
+              <input class="form-control" placeholder="Last Name" [(ngModel)]="lastname" name="lastname">
+            </div>
+
+            <div class="form-group">
+              <input class="form-control" placeholder="Email" [(ngModel)]="email" name="email">
+            </div>
+
+            <mat-form-field class="form-group">
+                <input matInput [matDatepicker]="picker" placeholder="When were you born?" name="dateOfBirth" [(ngModel)]="dateOfBirth">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <div class="form-group">
+              <input class="form-control" placeholder="Username" [(ngModel)]="username" name="username">
+            </div>
+
+
+            <div class="form-group">
+              <input class="form-control" placeholder="Password" type="password" [(ngModel)]="password" name="password">
+            </div>
+
+
+          
+            <div class="form-group">
+              <select class="form-control" placeholder="Sex" name="sex"  [(ngModel)]="sex" >
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+
+            <div>
+               <button mat-raised-button color="primary" name="submit" type="submit" >Submit</button>
+               <button mat-raised-button color="primary" name="submit" type="reset">clear</button>
+            </div>
+
+            </form> 
+          </div>
+        </div>  
+      </mat-tab>
+     
+     
+      
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>

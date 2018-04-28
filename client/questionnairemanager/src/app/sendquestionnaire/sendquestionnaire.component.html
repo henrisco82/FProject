@@ -1,0 +1,30 @@
+<div class="content">
+    <h3>Send Questions to Patients</h3>
+  
+      <form (ngSubmit)="send()">
+          <div class="formGroup">
+              <label>Which Patient do you want to send a questionnaire?</label>
+              <select  class="form-control"[(ngModel)]="thepatient"  name="thepatient" >
+                 <option value="{{patient.id}}" *ngFor="let patient of patients" >
+                    {{ patient.firstname }}
+                    {{ patient.lastname }}
+                  </option>
+                </select>
+          </div>
+ 
+          <div class="formGroup">
+             <label>Select the Questionnaire</label>
+             <select  class="form-control" [(ngModel)]="thequestion"  name="thequestion"  >
+                <option value="{{questionnaire.id}}" *ngFor="let questionnaire of questionnaires" >
+                    {{ questionnaire.title }}
+                 </option>
+               </select>
+         </div>
+ 
+ 
+          <div class="margin-20">
+             <button type="submit" class="btn btn-primary" >Send Questionnaire</button>
+           </div>
+      
+      </form>
+    </div>

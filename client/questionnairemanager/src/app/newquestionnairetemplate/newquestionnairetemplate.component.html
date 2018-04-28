@@ -1,0 +1,121 @@
+<div class="container">
+    <h4 class="card-title">{{myForm.value.name}} </h4>
+    <form [formGroup]="myForm"  (ngSubmit)="onSubmit()">
+        <!-- we will place our fields here -->
+
+        <!-- name -->
+        <div class="form-group">
+            <label>Title of Questionnaire</label>
+            <input class="form-control" type="text" formControlName="name" name="name">
+                <!--display error message if name is not valid-->
+                <small *ngIf="!myForm.controls.name.valid" class="text-danger">
+                    Title is required 
+                </small>
+        </div>
+
+        <!-- description -->
+        <div class="form-group">
+            <label>Description of Questionnaire</label>
+            <input class="form-control" type="text" formControlName="description" name="description">
+             <!--display error message if name is not valid-->
+             <small *ngIf="!myForm.controls.description.valid" class="text-danger">
+                Description is required 
+            </small>
+        </div>
+
+                <!-- list of items -->
+            <div formArrayName="item">
+                <div *ngFor="let item of myForm.controls.item.controls; let i=index">
+                    <!-- Item header, show remove button when more than one address available -->
+                    <div class="card-header">
+                        <span>Question {{i + 1}}</span>
+                         
+                        
+                        <span *ngIf="myForm.controls.item.controls.length > 1" (click)="removeItem(i)">
+                                <i class="fa fa-remove" style="font-size:24px;color:#F89B9B; float:right"></i>
+                        </span>
+                        
+                    </div>
+
+                    <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
+                    <div  [formGroupName]="i">
+                            <!--prefix-->
+                            <div>
+                                <label>Prefix</label>
+                                <input class="form-control" type="text" formControlName="prefix" name="prefix">
+                                <!--display error message if prefix is not valid-->
+                                <small [hidden]="myForm.controls.item.controls[i].controls.prefix.valid" class="text-danger">
+                                    Question Number is required
+                                </small>
+                            </div>
+
+ 
+                             <!-- Question Text -->
+                             <div>
+                                <label> Question Text </label>
+                                <input class="form-control" type="text" formControlName="text" name="text">
+                                <!--display error message if Question text is not valid-->
+                                <small [hidden]="myForm.controls.item.controls[i].controls.text.valid" class="text-danger">
+                                    Question Text is required
+                                </small>
+                            </div>
+
+                               <!-- Question Type -->
+                               <div>
+                                <label> Question Type </label>
+                                <select class="form-control"  formControlName="Questiontype" name="Questiontype">
+                                    <option value="string"> String </option>
+                                    <option value="boolean"> Boolean </option>
+                                    <option value="choice"> Choice </option>
+                                </select>
+                                <!--display error message if Question type is not valid-->
+                                <small [hidden]="myForm.controls.item.controls[i].controls.Questiontype.valid" class="text-danger">
+                                    Question Type is required
+                                </small>
+                            </div>
+
+                            <table>
+                                    <thead>
+                                    <tr>
+                                      <th>Option</th>
+                                      <th>
+                                        <button type="button" class="btn btn-success" (click)="addOption(i)">+</button>
+                                      </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody formArrayName="options">
+                                      <tr *ngFor="let option of item.get('options').controls; let j = index;" [formGroupName]="j">
+                                        <td>
+                                          <input formControlName="value"/>
+                                        </td>
+                                        <td>
+                                          <button  (click)="removeOption(i,j)" class="btn btn-danger">X</button>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                            </table>
+                          
+                     </div>
+                     
+                </div>
+            </div>
+            <div class="margin-20">
+                <a (click)="addItem()" style="cursor: default; color: blue">
+                  Add another Item <i class="fa fa-plus"></i>
+                </a>
+              </div>
+
+      
+              <div class="margin-20">
+                <button type="submit" class="btn btn-primary pull-right" >Submit</button>
+              </div>
+              <div class="clearfix"></div>
+              
+    
+   </form>
+  
+</div>
+
+
+          
+      

@@ -1,0 +1,55 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>Home</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <h2>User Registration</h2>
+  
+    <form (ngSubmit)="onRegisterSubmit()">
+    <ion-list>
+         <ion-item>
+            <ion-label floating>First Name</ion-label>
+            <ion-input [(ngModel)]="firstname" type="text" value="" name="firstname"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Last Name</ion-label>
+            <ion-input [(ngModel)]="lastname" type="text" value="" name="lastname"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Username</ion-label>
+            <ion-input [(ngModel)]="username" type="text" value="" name="username"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input [(ngModel)]="email" type="email" value="" name= "email"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Sex</ion-label>
+               <ion-select [(ngModel)]="sex" name="sex">
+                     <ion-option name="male"> Male </ion-option>
+                     <ion-option name="female"> Female </ion-option>
+               </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label>Date Of Birth</ion-label>
+            <ion-datetime displayFormat="MMM DD, YYYY" [(ngModel)]="dateOfBirth" name="dateOfBirth"></ion-datetime>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Password</ion-label>
+            <ion-input [(ngModel)]="password"  type="password" value="" name="password"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Confrim Password</ion-label>
+            <ion-input [(ngModel)]="confirmPassword"  type="password" value="" name="confirmpassword"></ion-input>
+          </ion-item>
+
+        
+      </ion-list>
+      
+     
+      <button ion-button full type="submit">Register</button>
+      </form>
+  </ion-content>
+  

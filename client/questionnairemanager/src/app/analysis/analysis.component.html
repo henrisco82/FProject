@@ -1,0 +1,42 @@
+<div class="container">
+
+    <form (ngSubmit) ="onSubmit(thequestion, thequestionnaire, chartType)">
+         <div class="formGroup">
+             <label>Which Questionniare do you want to analyze?</label>
+             <select class="form-control" [(ngModel)]="thequestionnaire"  name="thequestionnaire" (change)="selectchange($event)" >
+                <option value="{{questionnaire.id}}" *ngFor="let questionnaire of questionnaires" >
+                  {{ questionnaire.title }}
+                 </option>
+               </select>
+         </div>
+
+         <div class="formGroup">
+            <label>Select Question</label>
+            <select class="form-control" [(ngModel)]="thequestion"  name="thequestion"  >
+               <option value="{{questionnaire.text}}" *ngFor="let questionnaire of selectedquestionnaires" >
+                 {{ questionnaire.text }}
+                </option>
+              </select>
+        </div>
+
+        <div class="formGroup">
+            <label>What type of chart ?</label>
+            <select class="form-control" [(ngModel)]="chartType"  name="chartType"  >
+               <option value="bar" >Bar Chart</option>
+               <option value="pie" >Pie Chart</option>
+               <option value="line" >Line Chart</option>
+              </select>
+        </div>
+
+         <div>
+            <button type="submit" class="btn btn-primary" >Submit</button>
+          </div>
+    </form>
+
+
+      <div>
+        <canvas id="myChart">{{ chart }}</canvas>
+      </div>
+
+</div>
+

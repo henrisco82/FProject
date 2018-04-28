@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>
+          Questionnaire
+          <div style="float: right;">
+            <a (click)="onLogoutClick()">logout</a>
+          </div>
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <h2>Send Questions to Patients</h2>
+  
+    <form>
+    <ion-list>
+         
+          <ion-item >
+            <ion-label floating>Select Patients</ion-label>
+               <ion-select  name="thepatient"  [(ngModel)]="thepatient">
+                     <ion-option value="{{patient.id}}" *ngFor="let patient of patients" >
+                      {{ patient.firstname }}
+                      {{ patient.lastname }}
+                     </ion-option>
+               </ion-select>
+          </ion-item>
+         
+          <ion-item>
+            <ion-label floating>Select Questionnaire</ion-label>
+               <ion-select  [(ngModel)]="thequestion"  name="thequestion" >
+                <ion-option value="{{questionnaire.id}}" *ngFor="let questionnaire of questionnaires" >
+                  {{ questionnaire.title }}
+                 </ion-option>
+               </ion-select>
+          </ion-item>
+
+
+      </ion-list>
+      
+     
+      <button ion-button full type="submit" (click)="send()">Send Questionnaire</button>
+      </form>
+  </ion-content>
+  

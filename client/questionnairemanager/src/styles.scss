@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+
+//bootstrap
+
+@import "~bootswatch/dist/cosmo/_variables.scss";
+@import "~bootstrap/scss/bootstrap.scss";
+@import "~bootswatch/dist/cosmo/_bootswatch.scss";
+
+
+//angular material
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";

@@ -1,0 +1,62 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>
+          Questionnaire
+          <div style="float: right;">
+            <a (click)="onLogoutClick()">logout</a>
+          </div>
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <h2>Questionnaire</h2>
+    <div *ngIf="questionnaires"> 
+          <form (ngSubmit)="submitResponse()" >
+           <!-- <div *ngFor="let item of questionnaires; let i = index;" >  -->
+                 <div *ngIf="questionnaires"> 
+                  <div *ngFor="let item of questionnaires.item;  let i = index;" > 
+                       <ion-label> {{ item.prefix }} &nbsp; {{ item.text }} </ion-label>  
+                           <div *ngIf="item.Questiontype == 'boolean'" >
+                            <ion-list radio-group [(ngModel)]="answer[i]" name="answer" value="boolean">
+                                <ion-item *ngFor="let option of item.options; ">
+                                    <ion-label>{{option.value}}</ion-label>
+                                  <ion-radio  value="{{option.value}}"></ion-radio>
+                                </ion-item>
+                          </ion-list>
+                           </div>
+                           <div *ngIf="item.Questiontype == 'choice'; " >
+                            <ion-list>
+                              <ion-item *ngFor="let option of item.options; let j=index; ">
+                                <ion-label>{{option.value}}</ion-label>
+                            <!--   <ion-checkbox [(ngModel)]="option.checked" name="option.checked" [checked]="option.checked" (click)='onCheckboxChange(option, item, $event)' ></ion-checkbox> -->
+                            <ion-checkbox name="option.checked" [(ngModel)]="option.checked" (ionChange)="updateAnswer(i,j,option.value,option.checked)"></ion-checkbox>
+                              </ion-item>
+                          </ion-list>
+                           </div>
+                           <div *ngIf="item.Questiontype == 'string'; " >
+                               <ion-item>
+                                <ion-input type="text" [(ngModel)]="answer[i]" name="answer"> </ion-input>
+                              </ion-item>
+                           </div>
+                          </div>
+                    </div>
+
+               <!--  </div>  -->
+                <button ion-button full type="submit" >Submit Response </button>  
+         </form>
+  </div>
+
+
+
+  <div *ngIf="!questionnaires">
+          <p> There is currently no questionnaire for you to fill </p>
+  </div>
+
+
+  
+
+
+  
+  </ion-content>
+  

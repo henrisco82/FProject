@@ -1,0 +1,12 @@
+<mat-toolbar color="primary">
+  
+    <span>QuestionnaireManager</span>
+
+    <span class="example-spacer"></span>
+    
+    <button mat-button *ngIf="!auth.isAuthenticated()" routerLink="./Home">Home<i class="fa fa-home"></i></button>
+    <button mat-button *ngIf="auth.isAuthenticated()" routerLink="./Questionnaire">Menu<i class="fa fa-bars"></i></button>
+    <button mat-button *ngIf="!auth.isAuthenticated()" routerLink="#">About <i class="fa fa-info-circle"></i></button>
+    <button mat-button *ngIf="auth.isAuthenticated()" (click)="onLogoutClick()" >Logout <i class="fa fa-power-off"></i></button>
+ 
+</mat-toolbar>

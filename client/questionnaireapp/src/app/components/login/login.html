@@ -1,0 +1,26 @@
+<form (ngSubmit)="login()">
+<ion-list>
+    
+      <ion-item>
+        <ion-label floating>Username</ion-label>
+        <ion-input [(ngModel)]="username" type="text" value="" name="username"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input [(ngModel)]="password"  type="password" value="" name="password"></ion-input>
+      </ion-item>
+
+   
+    
+  </ion-list>
+  
+  <button ion-button full type="submit">Log In</button>
+  <ion-label>Remember Me   <ion-checkbox style="float:right" (ionChange)="RememberMe()"></ion-checkbox> </ion-label>
+  
+
+</form>
+
+
+
+<button ion-button full (click)="register()" >Register</button>

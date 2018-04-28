@@ -1,0 +1,21 @@
+    <table class="table" *ngIf="questionnaires">
+        <caption>List of Questionnaire Templates</caption>
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Date Created</th>
+        </tr>
+      </thead>
+      <tbody  *ngFor="let questionnaire of questionnaires; let i=index;">
+        <tr>
+          <th scope="row">{{i+1}}</th>
+          <td>{{questionnaire.name}}</td>
+          <td>{{questionnaire.description}}</td>
+          <td>{{questionnaire.date}}</td>
+          <td> <button name="edit" class="btn btn-primary" (click)="CreateQuestionnaireTemplate(questionnaire)">Use</button></td>
+        </tr>
+      </tbody>
+    </table>
+    

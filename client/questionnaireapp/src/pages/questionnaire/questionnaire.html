@@ -1,0 +1,55 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>
+          Questionnaire
+          <div style="float: right;">
+            <a (click)="onLogoutClick()" href="#">logout</a>
+          </div>
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <h2>Questionnaire</h2>
+    <div *ngIf="questionnaires"> 
+          <form [formGroup]="answerForm" novalidate (ngSubmit)="submitResponse(answerForm)" >
+           <!-- <div *ngFor="let item of questionnaires; let i = index;" >  -->
+                 <div *ngIf="questionnaires"> 
+                  <div *ngFor="let item of questionnaires.item;  let i = index;" > 
+                       <ion-label> {{ item.prefix }} &nbsp; {{ item.text }} </ion-label>  
+                           <div *ngIf="item.Questiontype == 'boolean'" >
+                            <ion-list radio-group >
+                                <ion-item *ngFor="let option of item.options; ">
+                                    <ion-label>{{option.value}}</ion-label>
+                                  <ion-radio  value="{{option.value}}" formControlValue="value"></ion-radio>
+                                </ion-item>
+                          </ion-list>
+                           </div>
+                           <div *ngIf="item.Questiontype == 'choice'; " >
+                            <ion-list>
+                              <ion-item *ngFor="let option of item.options;">
+                                <ion-label>{{option.value}}</ion-label>
+                              <ion-checkbox [(ngModel)]="option.checked" name="option.checked" [checked]="option.checked"></ion-checkbox>
+                              </ion-item>
+                          </ion-list>
+                           </div>
+                           <div *ngIf="item.Questiontype == 'string'; " >
+                               <ion-item>
+                                <ion-input type="text" [(ngModel)]="text[i]" name="text"> </ion-input>
+                              </ion-item>
+                           </div>
+                          </div>
+                    </div>
+
+               <!--  </div>  -->
+                <button ion-button full type="submit" >Submit Response </button>  
+         </form>
+  </div>
+
+
+
+  <div *ngIf="!questionnaires">
+          <p> There is currently no questionnaire for you to fill </p>
+  </div>
+  </ion-content>
+  
