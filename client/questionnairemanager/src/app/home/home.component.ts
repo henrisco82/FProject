@@ -63,7 +63,7 @@ export class HomeComponent implements OnInit {
 
         
         
-       if(this.role[0].principalId == this.loopbackauth.getCurrentUserId()){
+       if(this.role[0].principalId === this.loopbackauth.getCurrentUserId()){
            this.router.navigate(['./Questionnaire']);
            this._flashMessagesService.show('Welcome to the Questionnaire App '+ token.user.username, { cssClass: 'alert-success', timeout: 3000 });
         }else{
