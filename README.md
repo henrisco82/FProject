@@ -15,5 +15,5 @@ cd into questionnairemanager
 install dependencies with npm install
 
 username = henrisco82
-password = jaydenjames
+password = 
 
